@@ -8,16 +8,16 @@ const defaultSettings = {
   ]
 };
 
-function saveOptions(e) {
+const saveOptions = (e) => {
   browser.storage.local.set({settings: JSON.parse(document.querySelector('#settings').value)});
   e.preventDefault();
-}
+};
 
-function restoreOptions() {
+const restoreOptions = () => {
   browser.storage.local.get('settings').then((settings) => {
     document.querySelector('#settings').textContent = JSON.stringify(settings.settings || defaultSettings, null, 2);
   });
-}
+};
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.querySelector('form').addEventListener('submit', saveOptions);
