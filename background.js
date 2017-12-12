@@ -89,6 +89,18 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
   });
 });
 
-function escapeHtml(content) {
-  return content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-}
+// from https://iwb.jp/jquery-javascript-html-escape/
+const escapeHtml = (str) => {
+  if (!str) return;
+  return str.replace(/[<>&"'`]/g, (match) => {
+    const escape = {
+      '<': '&lt;',
+      '>': '&gt;',
+      '&': '&amp;',
+      '"': '&quot;',
+      '\'': '&#39;',
+      '`': '&#x60;'
+    };
+    return escape[match];
+  });
+};
