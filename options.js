@@ -2,6 +2,8 @@
 const defaultSettings = {
   'formats': [
     ['Markdown', '[%TITLE%](%URL%)'],
+    ['HTML', '<a href="%URL_HTML%">%TITLE_HTML%</a>'],
+    ['Plain', '%TITLE% - %URL%'],
     ['Seesaa', '[[%TITLE%>%URL%]]'],
   ]
 };
