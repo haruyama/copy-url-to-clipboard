@@ -1,6 +1,7 @@
 // This function must be called in a visible page, such as a browserAction popup
 // or a content script. Calling it in a background page has no effect!
 /* global document */
+/* eslint-disable no-unused-vars */
 const copyToClipboard = (text, html) => {
   const oncopy = (event) => {
     document.removeEventListener('copy', oncopy, true);
