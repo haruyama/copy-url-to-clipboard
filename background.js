@@ -20,16 +20,16 @@ function setFormats() {
     console.dir(formats);
 
     for (let i = 0; i < formats.length; i++) {
-      browser.contextMenus.remove('copy-link-to-clipboard-link:' + String(i));
+      browser.contextMenus.remove('copy-url-to-clipboard-link:' + String(i));
       browser.contextMenus.create({
-        id: 'copy-link-to-clipboard-link:' + String(i),
+        id: 'copy-url-to-clipboard-link:' + String(i),
         title: formats[i][0],
         contexts: ['link'],
       });
 
-      browser.contextMenus.remove('copy-link-to-clipboard-page:' + String(i));
+      browser.contextMenus.remove('copy-url-to-clipboard-page:' + String(i));
       browser.contextMenus.create({
-        id: 'copy-link-to-clipboard-page:' + String(i),
+        id: 'copy-url-to-clipboard-page:' + String(i),
         title: formats[i][0],
         contexts: ['page'],
       });
@@ -42,7 +42,7 @@ browser.storage.onChanged.addListener(setFormats);
 
 browser.contextMenus.onClicked.addListener((info, tab) => {
   console.dir(info);
-  const reg = /^copy-link-to-clipboard-(page|link):(\d+)$/;
+  const reg = /^copy-url-to-clipboard-(page|link):(\d+)$/;
   const matched = info.menuItemId.match(reg);
   if (matched.length !== 3) {
     return;
