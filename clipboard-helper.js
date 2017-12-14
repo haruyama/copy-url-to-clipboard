@@ -2,7 +2,7 @@
 // or a content script. Calling it in a background page has no effect!
 /* global document */
 /* eslint-disable no-unused-vars */
-const copyToClipboard = (text, html) => {
+const copyToClipboard = (text) => {
   const oncopy = (event) => {
     document.removeEventListener('copy', oncopy, true);
     // Hide the event from the page to prevent tampering.
@@ -11,7 +11,6 @@ const copyToClipboard = (text, html) => {
     // Overwrite the clipboard content.
     event.preventDefault();
     event.clipboardData.setData('text/plain', text);
-    event.clipboardData.setData('text/html', html);
   };
   document.addEventListener('copy', oncopy, true);
 

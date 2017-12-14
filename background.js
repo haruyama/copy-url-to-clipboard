@@ -65,7 +65,7 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
   // from https://github.com/piroor/multipletab/blob/3ed44b0b3a5d4822574a2b4445dca03ee861b8ee/modules/documentToCopyText.js#L27
   const formatted = formats[formatIndex][1].replace(/%URL%/gi, url).replace(/%(?:TITLE|TEXT)%/gi, title).replace(/%URL_HTML(?:IFIED)?%/gi, escapeHtml(url)).replace(/%TITLE_HTML(?:IFIED)?%/gi, escapeHtml(title));
 
-  const code = 'copyToClipboard(' + JSON.stringify(formatted) + ',)';
+  const code = 'copyToClipboard(' + JSON.stringify(formatted) + ')';
 
   browser.tabs.executeScript({
     code: 'typeof copyToClipboard === "function";',
